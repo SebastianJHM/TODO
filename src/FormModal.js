@@ -12,7 +12,8 @@ function FormModal() {
 
     function addNewTodo(event) {
         event.preventDefault();
-        const newId = String(Math.max(...todos.map(todo => Number(todo.id))) + 1);
+        let newId = String(Math.max(...todos.map(todo => Number(todo.id))) + 1);
+        if (newId === "-Infinity") { newId = 1; }
         const newTodo = {id: newId, text: newTodoText, completed: false};
         const newTodos = [...todos];
         newTodos.push(newTodo);
